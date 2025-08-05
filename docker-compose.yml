@@ -17,7 +17,7 @@ x-op-app:
   restart: unless-stopped
   environment:
     OPENPROJECT_HTTPS: '${OPENPROJECT_HTTPS:-true}'
-    OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8080}'
+    OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8090}'
     OPENPROJECT_HSTS: '${OPENPROJECT_HSTS:-true}'
     RAILS_CACHE_STORE: memcache
     OPENPROJECT_CACHE__MEMCACHE__SERVER: 'cache:11211'
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
     environment:
       OPENPROJECT_HTTPS: '${OPENPROJECT_HTTPS:-true}'
-      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8080}'
+      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8090}'
       OPENPROJECT_HSTS: '${OPENPROJECT_HSTS:-true}'
       RAILS_CACHE_STORE: memcache
       OPENPROJECT_CACHE__MEMCACHE__SERVER: 'cache:11211'
@@ -67,7 +67,7 @@ services:
       - 'opdata:/var/openproject/assets'
       - './enterprise_token.rb:/usr/src/app/app/models/enterprise_token.rb'
     ports:
-      - "${PORT:-8080}:80"
+      - "${PORT:-8090}:80"
     command: ./docker/prod/web
     networks:
       - frontend
@@ -83,7 +83,7 @@ services:
         - CMD
         - curl
         - '-f'
-        - 'http://localhost:8080${OPENPROJECT_RAILS__RELATIVE__URL__ROOT:-}/health_checks/default'
+        - 'http://localhost:8090${OPENPROJECT_RAILS__RELATIVE__URL__ROOT:-}/health_checks/default'
       interval: 10s
       timeout: 3s
       retries: 3
@@ -103,7 +103,7 @@ services:
     restart: unless-stopped
     environment:
       OPENPROJECT_HTTPS: '${OPENPROJECT_HTTPS:-true}'
-      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8080}'
+      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8090}'
       OPENPROJECT_HSTS: '${OPENPROJECT_HSTS:-true}'
       RAILS_CACHE_STORE: memcache
       OPENPROJECT_CACHE__MEMCACHE__SERVER: 'cache:11211'
@@ -128,7 +128,7 @@ services:
     restart: unless-stopped
     environment:
       OPENPROJECT_HTTPS: '${OPENPROJECT_HTTPS:-true}'
-      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8080}'
+      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8090}'
       OPENPROJECT_HSTS: '${OPENPROJECT_HSTS:-true}'
       RAILS_CACHE_STORE: memcache
       OPENPROJECT_CACHE__MEMCACHE__SERVER: 'cache:11211'
@@ -153,7 +153,7 @@ services:
     restart: on-failure
     environment:
       OPENPROJECT_HTTPS: '${OPENPROJECT_HTTPS:-true}'
-      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8080}'
+      OPENPROJECT_HOST__NAME: '${OPENPROJECT_HOST__NAME:-localhost:8090}'
       OPENPROJECT_HSTS: '${OPENPROJECT_HSTS:-true}'
       RAILS_CACHE_STORE: memcache
       OPENPROJECT_CACHE__MEMCACHE__SERVER: 'cache:11211'
