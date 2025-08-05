@@ -26,7 +26,7 @@ x-op-app: &app
     IMAP_ENABLED: "${IMAP_ENABLED:-false}"
   volumes:
     - "opdata:/var/openproject/assets"
-    - "/docker/openproject/enterprise/enterprise_token.rb:/app/app/models/enterprise_token.rb"
+    - "./enterprise_token.rb:/app/app/models/enterprise_token.rb"
 
 services:
   db:
